@@ -4,7 +4,7 @@ import pandas as pd
 
 def get_data(county_series_ids, df):
     url = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
-    registration_key = 'af3421b4cdcb43849545c7859564e456'  
+    registration_key = os.getenv('BLS_API_KEY')  
     with open('state_abbreviations.json', 'r') as file:
         state_abbreviations = json.load(file)
     
