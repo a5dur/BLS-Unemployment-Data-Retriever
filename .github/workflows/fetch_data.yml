@@ -2,7 +2,7 @@ name: Fetch BLS Data
 
 on:
   schedule:
-    - cron: '0 0 1 * *'  # Runs at midnight on the first day of each month
+    - cron: '0 0 20 * *'  # Runs at midnight on the first day of each month
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # Update to Node.js 20 compatible version
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@v3  # Update to Node.js 20 compatible version
 
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
@@ -45,3 +45,9 @@ jobs:
       with:
         name: placeUnemployment
         path: output/placeUnemployment.csv
+        
+    - name: Upload Unemployment data CSV as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Unemployment_data
+        path: output/Unemployment_data.csv
