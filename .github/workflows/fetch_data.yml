@@ -20,13 +20,13 @@ jobs:
       run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Build Docker image
-      run: docker build -t my-python-scripts .
+      run: docker build -t blaus-scripts .
 
     - name: Create output directory
       run: mkdir -p output
 
     - name: Run Docker container
-      run: docker run --rm -v ${{ github.workspace }}/output:/app/output my-python-scripts
+      run: docker run --rm -v ${{ github.workspace }}/output:/app/output blaus-scripts
 
     - name: Upload CSVs as artifacts
       uses: actions/upload-artifact@v3
