@@ -56,7 +56,8 @@ with open('series_ids_states.json', 'r') as file:
 all_series_ids = series_ids_data.get('series_ids', [])
 chunk_size = 50
 
-for i in range(0, len(all_series_ids), chunk_size):
+#for i in range(0, len(all_series_ids), chunk_size):
+for i in range(0, 100, chunk_size):
     place_series_ids = all_series_ids[i:i + chunk_size]
     
     print(f'Fetching data from {i} to {i+chunk_size} ids')
