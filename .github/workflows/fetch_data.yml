@@ -28,26 +28,20 @@ jobs:
     - name: Run Docker container
       run: docker run --rm -v ${{ github.workspace }}/output:/app/output blaus-scripts
 
-    - name: Upload CSVs as artifacts
-      uses: actions/upload-artifact@v3
+    - name: Upload state unemployment CSV as artifact
+      uses: actions/upload-artifact@v4
       with:
         name: stateUnemployment
         path: output/stateUnemployment.csv
 
-    - name: Upload county CSV as artifact
-      uses: actions/upload-artifact@v3
+    - name: Upload county unemployment CSV as artifact
+      uses: actions/upload-artifact@v4
       with:
         name: countyUnemployment
         path: output/countyUnemployment.csv
 
-    - name: Upload place CSV as artifact
-      uses: actions/upload-artifact@v3
+    - name: Upload place unemployment CSV as artifact
+      uses: actions/upload-artifact@v4
       with:
         name: placeUnemployment
         path: output/placeUnemployment.csv
-        
-    - name: Upload merged CSV as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: Unemployment_data
-        path: output/Unemployment_data.csv
