@@ -26,7 +26,9 @@ jobs:
       run: mkdir -p output
 
     - name: Run Docker container
-      run: docker run --rm -v ${{ github.workspace }}/output:/app/output blaus-scripts
+      env:
+        BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+      run: docker run --rm -e BLS_API_KEY=${{ secrets.BLS_API_KEY }} -v ${{ github.workspace }}/output:/app/output blaus-scripts
 
     - name: Upload state unemployment CSV as artifact
       uses: actions/upload-artifact@v4
