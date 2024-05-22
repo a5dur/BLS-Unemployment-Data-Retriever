@@ -45,3 +45,9 @@ jobs:
       with:
         name: placeUnemployment
         path: output/placeUnemployment.csv
+        
+    - name: Upload merged CSV as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Unemployment_data
+        path: output/Unemployment_data.csv
